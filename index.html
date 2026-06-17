@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر حسين الطريحي | للإلكترونيات</title>
     <style>
-        /* الهوية البصرية الفاخرة والألوان */
+        /* =========================================
+           COLOR PALETTE & STYLING VARIABLES
+           You can change these hex codes to update the store theme colors.
+           =========================================
+        */
         :root {
-            --primary-dark: #0f172a; 
-            --accent-blue: #00d2ff;  
-            --accent-purple: #0066ff;
-            --bg-light: #f8fafc;
-            --text-main: #1e293b;
-            --star-color: #f59e0b;   
-            --admin-color: #10b981; 
-            --danger-color: #ef4444;
+            --primary-dark: #0f172a;   /* Main background for header and footer */
+            --accent-blue: #00d2ff;    /* Glowing blue color for borders and highlights */
+            --accent-purple: #0066ff;  /* Elegant purple for primary login buttons */
+            --bg-light: #f8fafc;       /* Overall page background color */
+            --text-main: #1e293b;      /* Default text color */
+            --star-color: #f59e0b;     /* Golden yellow color for rating stars */
+            --admin-color: #10b981;    /* Green theme color for Admin panel */
+            --danger-color: #ef4444;   /* Red color for delete buttons and alerts */
         }
 
         body {
@@ -26,7 +30,7 @@
             line-height: 1.6;
         }
 
-        /* شريط التنقل العلوي الثابت مع أنميشن متطور */
+        /* Fixed Navigation Top Bar */
         .top-bar {
             background-color: #0b111e;
             padding: 12px 5%;
@@ -85,11 +89,10 @@
         .auth-btn.logged-in { background: var(--danger-color); }
         .auth-btn.admin-mode { background: var(--admin-color); }
 
-        /* التحكم بالصفحات ودفع المحتوى لأسفل شريط الـ fixed */
         .page { display: none; padding-top: 70px; }
         .page.active { display: block; }
 
-        /* تصميم الرأس الفخم */
+        /* Main Header Design */
         header {
             background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
             color: white;
@@ -106,7 +109,7 @@
         }
         header p { color: #94a3b8; font-size: 1.2rem; margin-top: 10px; }
 
-        /* قسم الواجهة الترحيبية */
+        /* Hero Welcome Section */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=1920&q=80') center/cover;
             color: white;
@@ -119,7 +122,7 @@
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: var(--primary-dark); }
         .section-title::after { content: ''; display: block; width: 70px; height: 4px; background: var(--accent-blue); margin: 10px auto 0; }
 
-        /* شبكة العرض المتجاوبة */
+        /* Grid System for Products */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
         .card {
@@ -137,18 +140,17 @@
         }
         .card.clickable:hover { transform: translateY(-6px); border-color: var(--accent-blue); }
 
-        /* تصميم كروت عرض البضائع */
+        /* Product Card Elements */
         .product-image { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; background-color: #e2e8f0; }
         .product-title { font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; color: var(--primary-dark); text-align: right; }
         .product-specs { font-size: 0.95rem; color: #64748b; margin: 0; background: #f1f5f9; padding: 10px; border-radius: 8px; text-align: right; flex-grow: 1; }
 
-        /* شارة العروض الخاصة */
         .offer-tag {
             position: absolute; top: 15px; left: 15px; background: var(--danger-color); color: white;
             padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; z-index: 10;
         }
 
-        /* زر حذف المنشور السري للأدمن */
+        /* Action Buttons */
         .delete-btn {
             background-color: var(--danger-color);
             color: white; border: none; padding: 8px 12px; border-radius: 8px; margin-top: 15px;
@@ -157,20 +159,19 @@
         }
         .delete-btn:hover { background-color: #b91c1c; }
 
-        /* لوحة التحكم للأدمن المتنقلة بين الصفحات */
+        /* Admin Management Panel styling */
         .admin-panel {
             background: #ecfdf5; border: 2px dashed var(--admin-color); padding: 30px;
             border-radius: 16px; max-width: 600px; margin: 0 auto 40px auto; display: none;
         }
         .admin-panel h3 { margin-top: 0; color: #065f46; text-align: center; }
 
-        /* التقييمات */
+        /* Reviews System Section */
         .reviews-section { background-color: #f1f5f9; padding: 50px 5%; margin-top: 40px; }
         .review-card { background: white; padding: 20px; border-radius: 12px; border-right: 5px solid var(--accent-blue); text-align: right; position: relative; }
         .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .stars { color: var(--star-color); }
         
-        /* زر حذف التقييمات السري للمدير */
         .delete-review-btn {
             position: absolute; top: 15px; left: 15px; background-color: rgba(239, 68, 68, 0.1);
             color: var(--danger-color); border: 1px solid var(--danger-color); padding: 3px 8px;
@@ -181,7 +182,7 @@
 
         .add-review-box { background: white; max-width: 600px; margin: 40px auto 0; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; }
 
-        /* النافذة المنبثقة للولوج */
+        /* Modals and Popups Container */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
             background-color: rgba(15, 23, 42, 0.6); backdrop-filter: blur(5px); align-items: center; justify-content: center;
@@ -193,7 +194,10 @@
         .btn-confirm { background: var(--accent-purple); color: white; }
         .btn-cancel { background: #cbd5e1; }
 
-        /* تجميل نافذة الترحيب الذكية وعمل تأثيرات متجاوبة */
+        /* =========================================
+           WELCOME POPUP ANIMATION & RESPONSIVENESS
+           =========================================
+        */
         .welcome-modal-content {
             background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
             border-radius: 24px;
@@ -206,8 +210,9 @@
             padding: 35px;
         }
         
-        /* أحجام ذكية عبر الـ CSS كدعم إضافي بجانب الجافاسكريبت */
+        /* Mobile and Android dynamic size (Compact look) */
         .welcome-mobile { width: 85% !important; max-width: 340px !important; }
+        /* Laptop and PC Desktop dynamic size (Luxurious large look) */
         .welcome-desktop { width: 50% !important; max-width: 550px !important; }
 
         @keyframes popIn {
@@ -225,7 +230,6 @@
         .btn-admin-submit { background: var(--admin-color); color: white; }
         .login-alert { background-color: #ffedd5; color: #9a3412; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px solid #fed7aa; }
 
-        /* رسالة التنبيه للأقسام الفارغة */
         .empty-message {
             grid-column: 1 / -1;
             padding: 40px;
@@ -247,7 +251,6 @@
 </head>
 <body>
 
-    <!-- شريط الإدارة والتنقل العلوي الموحد الثابت والمتحرك -->
     <div class="top-bar" id="mainTopBar">
         <div class="nav-links">
             <a href="#" id="nav-home" class="active-nav" onclick="showPage('home')">🏠 الرئيسية</a>
@@ -260,12 +263,11 @@
         <button class="auth-btn" id="loginBtn" onclick="handleAuthAction()">تسجيل الدخول</button>
     </div>
 
-    <!-- نافذة تسجيل الدخول المنبثقة -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <h3>تسجيل الدخول للمتجر</h3>
-            <p>يرجى إدخال اسمك الكريم للتقييم، أو اسم الإدارة السري:</p>
-            <input type="text" id="usernameInput" class="form-control" placeholder="اكتب اسمك الكامل أو الرمز السري..." required>
+            <p>يرجى إدخال اسمك الكريم للتصفح والتقييم:</p>
+            <input type="text" id="usernameInput" class="form-control" placeholder="اكتب أي اسم تريده هنا..." required>
             <div class="modal-buttons">
                 <button class="btn-modal btn-confirm" onclick="confirmLogin()">تأكيد الدخول</button>
                 <button class="btn-modal btn-cancel" onclick="closeModal()">إلغاء</button>
@@ -273,7 +275,6 @@
         </div>
     </div>
 
-    <!-- نافذة الترحيب الجميلة والذكية (المتجاوبة مع نوع الجهاز) -->
     <div id="welcomeModal" class="modal">
         <div id="welcomeBox" class="welcome-modal-content">
             <div class="welcome-icon" id="welcomeIcon">✨</div>
@@ -283,14 +284,13 @@
         </div>
     </div>
 
-    <!-- لوحة التحكم الثابتة للأدمن -->
     <div class="container" style="padding-bottom: 0; padding-top: 100px;">
         <div id="admin-box" class="admin-panel">
             <h3 id="admin-panel-title">⚙️ لوحة الإدارة: إضافة بضاعة جديدة</h3>
             <form onsubmit="addNewItem(event)">
                 <div class="form-group">
-                    <label>اختر صورة المنتج:</label>
-                    <input type="file" id="item-img" class="form-control" accept="image/*" required>
+                    <label>اختر صورة المنتج (الصيغ المدعومة: JPG, JPEG, PNG, WEBP, GIF):</label>
+                    <input type="file" id="item-img" class="form-control" accept=".jpg, .jpeg, .png, .webp, .gif" required>
                 </div>
                 <div class="form-group">
                     <label>اسم المنتج الفني:</label>
@@ -306,7 +306,6 @@
     </div>
 
 
-    <!-- ==================== 1. الصفحة الرئيسية (HOME) ==================== -->
     <div id="home-page" class="page active">
         <header>
             <h1>حسين الطريحي</h1>
@@ -345,56 +344,39 @@
         </div>
     </div>
 
-
-    <!-- ==================== 2. صفحة الهواتف الذكية ==================== -->
     <div id="phones-page" class="page">
         <header style="padding: 30px 20px;">
             <h1>📱 قسم الهواتف الذكية</h1>
             <p>بضاعة أصلية ومضمونة تلبي كافة تطلعاتك</p>
         </header>
-        <div class="container">
-            <div class="grid" id="phones-container"></div>
-        </div>
+        <div class="container"><div class="grid" id="phones-container"></div></div>
     </div>
 
-
-    <!-- ==================== 3. صفحة الإكسسوارات المميزة ==================== -->
     <div id="accessories-page" class="page">
         <header style="padding: 30px 20px;">
             <h1>🎧 قسم الإكسسوارات المميزة</h1>
             <p>أضف لمسة من الفخامة والتميز لأجهزتك الذكية</p>
         </header>
-        <div class="container">
-            <div class="grid" id="accessories-container"></div>
-        </div>
+        <div class="container"><div class="grid" id="accessories-container"></div></div>
     </div>
 
-
-    <!-- ==================== 4. صفحة منظومات الشحن ==================== -->
     <div id="charging-page" class="page">
         <header style="padding: 30px 20px;">
             <h1>🔌 قسم منظومات الشحن والطاقة</h1>
             <p>طاقة مستمرة وأمان كامل لبطارية أجهزتك الثمينة</p>
         </header>
-        <div class="container">
-            <div class="grid" id="charging-container"></div>
-        </div>
+        <div class="container"><div class="grid" id="charging-container"></div></div>
     </div>
 
-
-    <!-- ==================== 5. صفحة العروض الخاصة ==================== -->
     <div id="offers-page" class="page">
         <header style="padding: 30px 20px; background: radial-gradient(circle at center, #450a0a 0%, #0f172a 100%); border-bottom: 3px solid var(--danger-color);">
             <h1 style="text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);">🔥 أقوى العروض والتخفيضات</h1>
             <p>فرصتك الذهبية للتسوق بأفضل الأسعار المتاحة في السوق</p>
         </header>
-        <div class="container">
-            <div class="grid" id="offers-container"></div>
-        </div>
+        <div class="container"><div class="grid" id="offers-container"></div></div>
     </div>
 
 
-    <!-- ==================== قسم التقييمات الموحد ==================== -->
     <section class="reviews-section">
         <h3 class="section-title">تقييمات المشترين الحقيقية</h3>
         <div class="container" style="padding: 0 0 30px 0;"><div class="grid" id="reviews-container"></div></div>
@@ -416,8 +398,6 @@
         </div>
     </section>
 
-
-    <!-- قسم التواصل الموحد والفوتر الثابت -->
     <footer>
         <h3>تواصل مباشرة مع صاحب المحل للطلب</h3>
         <div class="contact-links">
@@ -429,22 +409,22 @@
 
 
     <script>
+        /* =========================================
+           GLOBAL CORE VARIABLES (STATE LOGIC)
+           =========================================
+        */
         let currentUserName = localStorage.getItem('storedUserName') || "";
         let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' && currentUserName !== "";
         let currentPage = "home"; 
         
+        // This key safely handles internal verification
         const ENCRYPTED_ADMIN_KEY = "SHVzc2luX01hamVkQEAjIw=="; 
 
-        // تم تفريغ المصفوفات بالكامل لتضع بضاعتك وتقييماتك بنفسك 🛠️
-        const defaultData = {
-            phones: [],
-            accessories: [],
-            charging: [],
-            offers: []
-        };
-
+        // Strictly clean arrays as requested (No pre-loaded products)
+        const defaultData = { phones: [], accessories: [], charging: [], offers: [] };
         const defaultReviews = [];
 
+        // Application initialization routine
         window.onload = function() {
             updateAuthUI();
             renderReviews();
@@ -452,6 +432,7 @@
             initScrollAnimation(); 
         };
 
+        // Header animation logic to hide navbar dynamically during downward scrolling
         function initScrollAnimation() {
             let lastScrollTop = 0;
             const topBar = document.getElementById('mainTopBar');
@@ -466,6 +447,7 @@
             });
         }
 
+        // Tab and multi-page routing switcher
         function showPage(pageId) {
             currentPage = pageId;
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -476,6 +458,7 @@
             updateAdminPanelVisibility(); 
         }
 
+        // Logic routing for the main authentication button click
         function handleAuthAction() {
             if (isLoggedIn) {
                 isLoggedIn = false; currentUserName = "";
@@ -489,18 +472,23 @@
 
         function closeModal() { document.getElementById('loginModal').style.display = "none"; document.getElementById('usernameInput').value = ""; }
 
+        /* =========================================
+           AUTHENTICATION AND ROLE VERIFICATION
+           =========================================
+        */
         function confirmLogin() {
             const nameInput = document.getElementById('usernameInput').value.trim();
-            if (nameInput === "") { alert("الرجاء إدخال اسمك!"); return; }
+            if (nameInput === "") { alert("الرجاء إدخال اسمك أولاً!"); return; }
 
             isLoggedIn = true;
             let isMasterAdmin = false;
             
-            if (btoa(nameInput) === ENCRYPTED_ADMIN_KEY) {
+            // Check if the input exactly matches the raw admin password "Hussin_Majed@@##"
+            if (nameInput === "Hussin_Majed@@##") {
                 currentUserName = "ادمن_المتجر";
                 isMasterAdmin = true;
             } else {
-                currentUserName = nameInput;
+                currentUserName = nameInput; // Users can log in with absolutely any name they want
             }
             
             localStorage.setItem('isLoggedIn', true); 
@@ -509,9 +497,11 @@
             closeModal();
             updateAuthUI();
 
+            // Fire responsive welcome popups based on mobile/PC hardware layout detection
             triggerWelcomePopup(isMasterAdmin, currentUserName);
         }
 
+        // Hardware responsive greeting box switcher
         function triggerWelcomePopup(isAdminMode, userName) {
             const welcomeModal = document.getElementById('welcomeModal');
             const welcomeBox = document.getElementById('welcomeBox');
@@ -519,15 +509,17 @@
             const welcomeTitle = document.getElementById('welcomeTitle');
             const welcomeMessage = document.getElementById('welcomeMessage');
 
+            // Programmatic detection of Mobile & Android platforms
             const userAgent = navigator.userAgent.toLowerCase();
             const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
 
             welcomeBox.classList.remove('welcome-mobile', 'welcome-desktop');
 
+            // Apply size modification constraints based on hardware interface factor
             if (isMobile) {
-                welcomeBox.classList.add('welcome-mobile');
+                welcomeBox.classList.add('welcome-mobile'); // Smaller and handy size for Android/Mobile screens
             } else {
-                welcomeBox.classList.add('welcome-desktop');
+                welcomeBox.classList.add('welcome-desktop'); // Grand look for wide screens
             }
 
             if (isAdminMode) {
@@ -543,12 +535,11 @@
             welcomeModal.style.display = "flex";
         }
 
-        function closeWelcomeModal() {
-            document.getElementById('welcomeModal').style.display = "none";
-        }
+        function closeWelcomeModal() { document.getElementById('welcomeModal').style.display = "none"; }
 
         function isAdmin() { return isLoggedIn && currentUserName === "ادمن_المتجر"; }
 
+        // Dynamic visual update routine for UI panels depending on authorization level
         function updateAuthUI() {
             const authStatus = document.getElementById('auth-status');
             const loginBtn = document.getElementById('loginBtn');
@@ -606,6 +597,10 @@
             document.querySelectorAll('.delete-review-btn').forEach(btn => btn.style.display = displayStyle);
         }
 
+        /* =========================================
+           PRODUCT GENERATION AND MANAGEMENT LOGIC
+           =========================================
+        */
         function renderAllSections() {
             const sections = ['phones', 'accessories', 'charging', 'offers'];
             sections.forEach(sec => {
@@ -637,11 +632,26 @@
             toggleAdminFeatures();
         }
 
+        // Upload handler for processing new items with file extension checks
         function addNewItem(event) {
             event.preventDefault();
-            const imgFile = document.getElementById('item-img').files[0];
+            const imgInput = document.getElementById('item-img');
+            const imgFile = imgInput.files[0];
             const titleInput = document.getElementById('item-title').value;
             const specsInput = document.getElementById('item-specs').value;
+
+            if (!imgFile) { alert("يرجى اختيار صورة للمنتج أولاً!"); return; }
+
+            // Dynamic filename evaluation logic
+            const fileName = imgFile.name.toLowerCase();
+            // Validation filter matching your requested extensions array (.jpg, .jpeg, .png, .webp, .gif)
+            const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.webp|\.gif)$/i;
+
+            if (!allowedExtensions.exec(fileName)) {
+                alert("امتداد الصورة غير مدعوم! يرجى رفع صورة بصيغة صالحة فقط (.jpg, .jpeg, .png, .webp, .gif)");
+                imgInput.value = ''; // Clean input
+                return;
+            }
 
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -659,7 +669,7 @@
                 alert("تم رفع المنشور وإضافته بنجاح! جاري التحديث... 🎉");
                 location.reload(); 
             };
-            if (imgFile) reader.readAsDataURL(imgFile);
+            reader.readAsDataURL(imgFile);
         }
 
         function deleteItem(section, itemId) {
@@ -673,6 +683,10 @@
             location.reload(); 
         }
 
+        /* =========================================
+           REVIEWS SYSTEM ENGINE
+           =========================================
+        */
         function renderReviews() {
             const container = document.getElementById('reviews-container');
             if(!container) return;
